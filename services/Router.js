@@ -13,7 +13,6 @@ const Router = {
 
     window.addEventListener('popstate', function handleURLChange(event) {
       Router.go(event.state.route, false)
-      console.log(event.state)
     })
 
 
@@ -27,18 +26,17 @@ const Router = {
 
     switch (route) {
       case '/':
-        pageElement = document.createElement('h1')
-        pageElement.textContent = "Menu"
+        pageElement = document.createElement('menu-page')
         break;
 
       case '/order':
-        pageElement = document.createElement('h1')
+        pageElement = document.createElement('order-page')
         pageElement.textContent = "Your Order"
         break;
 
       default:
         if(route.startsWith("/product-")) {
-          pageElement = document.createElement('h1')
+          pageElement = document.createElement('details-page')
           pageElement.textContent = 'Details'
           const paramId = route.substring(route.lastIndexOf("-")+1)
           pageElement.dataset.id = paramId
